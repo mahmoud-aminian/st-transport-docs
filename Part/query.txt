@@ -1,0 +1,24 @@
+پيمانكار 
+
+and os.station_id = 210 and ds.station_id = 831 and pl.shipment_type_id = 1 and trunc(pl.PRICE_LIST_DATE) <= trunc(fdate.F2C(1405,3,13)) and pl.price_list_obj_type_id= 0  and trunc(nvl(pl.price_list_expire_date,sysdate +1) ) >= trunc(fdate.F2C(1405,3,13))and pl.vehicle_type_id = 4 and pl.price_list_id in (select cpl.price_list_id From tbl_contract_price_list cpl where cpl.contract_id = 4118)
+
+راننده 
+قرارداد 
+
+ and trunc(c.start_date) <= fdate.F2C(1405,3,17) and trunc(nvl(c.end_date,sysdate + 1)) >= fdate.F2C(1405,3,17)  and c.contract_obj_type_id=4  and c.contract_type_id = 2   and      t.beneficiary_id = 101
+
+قيمت
+
+ and pl.vehicle_type_id = 4 and pl.shipment_type_id = 1 and pl.price_list_id in (select cpl.price_list_id From tbl_contract_price_list cpl where cpl.contract_id = 1601) and trunc(pl.PRICE_LIST_DATE+1) <= to_date('07/06/2026','dd/mm/yyyy') and trunc(nvl(pl.price_list_expire_date,sysdate)) >=  to_date('07/06/2026','dd/mm/yyyy')
+
+ and pld.price_list_id = 5566 and pld.origin_station_id = 786 and pld.dest_station_id = 365
+
+
+
+
+
+گريد كوئري
+
+select tp.way_bill_no,tp.transport_date,tp.real_driver_id,t.amount
+from tbl_transport  tp  left join   TBL_TRANSPORT_COST t  on tp.transport_id=t.transport_id
+where  tp.customer_id=1461   and  tp.executive_confirm_date is not null and tp.cancel_date is null and t.ac_type_srl=532
